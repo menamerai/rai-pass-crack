@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Cracker</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+    <div id="container">
+        <h1>Password Cracker</h1>
+        <form action="" method="post" novalidate id="password-form">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.password.label }}<br>
+                {{ form.password(size=32) }}
+            </p>
+            <p>
+                {{ form.submit() }}
+            </p>
+        </form>
+        {% with outputs = get_flashed_messages() %}
+        {% if outputs %}
+        <ul>
+            {% for output in outputs %}
+            <li>{{ output }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
